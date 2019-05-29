@@ -1,11 +1,11 @@
 import React from 'react';
 
-const TodoForm = (task ,changeHandler , addTodo , completedTodo) =>{
+const TodoForm = ({task ,changeHandler , addTodo , completedTodo}) =>{
     return(
         <div>
            <input
            value={task}
-           onClick ={changeHandler}
+           onChange={changeHandler}
            type ='text'
            /> 
            <button onClick={addTodo}>Add todo</button>
