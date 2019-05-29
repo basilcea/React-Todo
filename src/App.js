@@ -39,7 +39,6 @@ constructor(props){
     const selectedTodo = this.state.todoArray.find(todo =>todo.id === e);
     // eslint-disable-next-line no-unused-expressions
     selectedTodo.completed ? selectedTodo.completed = false:selectedTodo.completed =true
-    console.log(this.state.todoArray)
   }
 
   onRemove =()=>{
