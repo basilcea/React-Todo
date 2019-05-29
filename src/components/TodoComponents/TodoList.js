@@ -4,10 +4,10 @@
 import React from 'react';
 import Todo from './Todo'
 
-const Todolist = ({todoArray}) =>{
+const Todolist = ({todoArray, select}) =>{
     return (
         <div>
-            {todoArray.map(todo => <Todo key={todo.id} task={todo.task}/>)
+            {todoArray.map(todo => <Todo key={todo.id} task={todo.task} strikeThrough={select} id={todo.id}/>)
         }
         </div>
     )

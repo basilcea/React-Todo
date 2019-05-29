@@ -29,19 +29,27 @@ constructor(props){
         completed:false,
       }
       const newTodoArray = this.state.todoArray.concat(newTodo);
-
     this.setState({
       todoArray: newTodoArray,
-      todoTask: '',
+      todoTask: ''
     });
+
   }
-  onComplete =(id)=>{
-    const newTodoArray = this.state.todoArray.filter(todo => todo.id !== id);
+  onSelectComplete =(e) => {
+    const selectedTodo = this.state.todoArray.find(todo =>todo.id === e);
+    // eslint-disable-next-line no-unused-expressions
+    selectedTodo.completed ? selectedTodo.completed = false:selectedTodo.completed =true
+    console.log(this.state.todoArray)
+  }
+
+  onRemove =()=>{
+    const newTodoArray = this.state.todoArray.filter(todo =>todo.completed !== true);
     this.setState({
       todoArray: newTodoArray,
     })
 
   }
+  
   // you will need a place to store your state in this component.
 
   // design `App` to be the parent component of your application.
@@ -50,8 +58,8 @@ constructor(props){
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todoArray = {this.state.todoArray} />
-        <TodoForm  task={this.state.todoTask} changeHandler={this.onChange} addTodo={this.onAdd}  completedTodo={this.onComplete}/>
+        <TodoList todoArray = {this.state.todoArray} select={this.onSelectComplete}/>
+        <TodoForm  task={this.state.todoTask} changeHandler={this.onChange} addTodo={this.onAdd}  completedTodo={this.onRemove}/>
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const todo =(props)=>{
+const todo =({id, task, strikeThrough})=>{
     return (
-        <div key={props.id}>
-            <p>{props.task}</p>
+        <div key={id} onClick={()=>strikeThrough(id)}>
+            <p>{task}</p>
         </div>
     )
 
