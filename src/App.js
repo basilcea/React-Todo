@@ -61,7 +61,7 @@ class App extends React.Component {
 
   onRemove = () => {
     const newTodoArray = this.state.todoArray.filter(
-      todo => todo.completed !== true
+      todo => todo.completed !== true || todo.completed !=='closed'
     );
     this.setState({
       todoArray: newTodoArray
