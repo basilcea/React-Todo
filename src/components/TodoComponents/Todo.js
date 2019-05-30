@@ -12,21 +12,21 @@ const todo =({task, strikeThrough, start, hash, text})=>{
     else if(hash.completed ===true){
         className +="  completed";
         text = 'Completed';
+        document.querySelector(".todo-task").disabled =true;
     }
-    else if(hash.completed ==='striked'){
-        hash.completed=true;
-        className +=' strikeThrough';
+    else if(hash.completed ==='striked'  ){
+        document.querySelector(`.todo-task-${hash.id}`).classList.toggle('strikeThrough');
         text = 'Closed';
     }
     else{
         text='Start'
     }
-    console.log(hash)
+
 
     return (
-        <div className='todo' onClick={()=>strikeThrough(hash)}>
+        <div className='todo'>
       
-            <div className={className} >
+            <div className={`${className} ${className}-${hash.id}`} >
                  <p>{task}</p>
             </div>
             <div className='todo-buttons'>

@@ -3,13 +3,16 @@ import React from 'react';
 const TodoForm = ({task ,changeHandler , addTodo , completedTodo}) =>{
     return(
         <div>
-           <input
+        <form onSubmit={e => addTodo(e)}>
+        <input
            value={task}
            onChange={changeHandler}
            type ='text'
            /> 
-           <button onClick={addTodo}>Add todo</button>
+           <button >Add todo</button>
            <button onClick={completedTodo}>Clear Completed</button>
+        </form>
+           
         </div>
     )    
 }
