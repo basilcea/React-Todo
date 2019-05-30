@@ -67,38 +67,24 @@ class App extends React.Component {
       todoArray: newTodoArray
     });
   };
-//   onStrikeThrough = e => {
-//     // else if (selectedTodo.completed ==='closed'){
-//     //   selectedTodo.completed = true
+  onStrikeThrough = id =>{
+    const selectedTodo = this.state.todoArray.find(todo => todo.id === id);
+    if(selectedTodo.completed === false || selectedTodo.completed === 'started'){
+       selectedTodo.completed = 'striked'
+    }
+    if(selectedTodo.completed === 'closed'){
+      selectedTodo.completed = false 
+    }
+    this.setState({
+      todoArray:this.state.todoArray
+    })
+  
+  }
 
-//     // }
-//     //  else{
-//     //    selectedTodo.completed = false
-//     // }
-// // striked => unstrike (completed=striked => complete=!)
-// // true => dont to anything
-// // false =>strike
-// // started =>strike
-// // false => started => true
-
-// // started to true
-
-//     console.log(e)
-//     this.setState({
-//       todoArray: this.state.todoArray.map(todo => {
-//         if (todo.id === e.id) {
-//           if (todo.completed === false || todo.completed === "started") {
-//             todo.completed = "striked";
-//           }
-//         }
-//         return todo;
-//       })
-//     });
-//   };
   onSubmit = event =>{
     const data = localStorage.getItem('tasks');
     const tasks = JSON.parse(data);
-    
+ 
   const results = tasks.filter(
     todo =>  todo.task.toLowerCase().includes(event.target.value.toLowerCase())
     )
